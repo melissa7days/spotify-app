@@ -1,0 +1,33 @@
+
+<h1 style="color: #fff;"><img src="https://www.freepnglogos.com/uploads/spotify-logo-png/file-spotify-logo-png-4.png" width="50" height="50" style="margin-right: 20px;">Need Music?</h1>
+<p>Use Spotify to browse new releases and find your favourite songs</p>
+<form>
+    <div class="form-group">
+        <input type="text" name="searchStr"[(ngModel)]="searchStr" class="form-control" placeholder="Search Artist"(keyup)="searchMusic()"[formControl]="query" style="border-radius: 30px;">
+    </div>
+</form>
+
+<div *ngIf="results">
+    <div *ngFor="let res of results">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search-res well">
+                    <div class="card mb-2">
+                        <a routerLink="/artist/{{res.id}}">
+                        <div class="card-body">
+                            <h4><a routerLink="/artist/{{res.id}}">{{res.name}}</a></h4>
+                            <div>
+                                Genres: <span *ngFor="let genre of res.genres">{{genre}}</span>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- comment -->
+</div>
+
+
+<router-outlet></router-outlet>
